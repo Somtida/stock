@@ -10,13 +10,25 @@
    <li role="presentation"><a ui-sref="stock.addStock">Add Stock</a></li>
 </ul> -->
 
-      <form ng-submit='addStock()'>
+  <form ng-submit='addStock()'>
 
-        <input type="text" ng-model='addObj.symbol' placeholder="symbol" required>
-        <button class="btn btn-success">Add</button>
+    <input type="text" ng-model='addObj.symbol' placeholder="symbol" required>
+    <button class="btn btn-success">Add</button>
 
-      </form>
-      <button class="btn btn-warning" ng-click="refreshPage()">Refresh</button>
+  </form>
+  <button class="btn btn-info" ng-click="refreshPage()">Refresh</button>
+  <br>
+  <br>
+
+  <div>
+    <div ng-if="message" class="alert alert-warning">
+      {{message}}
+    </div>
+  </div>
+
+
+
+
 
   <div ng-if="myStock">
     <!-- {{myStock | json}} -->
@@ -53,7 +65,7 @@
       </tr>
       <tr>
         <td>Timestamp : </td>
-        <td>{{ stock.Timestamp | date}}</td>
+        <td>{{ stock.Timestamp | date:'medium'}}</td>
       </tr>
       <tr>
         <td>ChangePercent : </td>

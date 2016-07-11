@@ -15,6 +15,18 @@ app.controller('mainCtrl', function($scope, $state, User) {
 
 app.controller('homeCtrl', function($scope, Stock) {
   console.log('homeCtrl!');
+  $scope.lookupStock = () => {
+    console.log("$scope.searchObj.symbol: ", $scope.searchObj.symbol);
+    Stock.lookupStock($scope.searchObj.symbol)
+      .then(res => {
+        console.log("res: ", res.data);
+        $scope.lookupArr = res.data;
+      })
+      .catch(err => {
+        console.log("err: ", err);
+      })
+  }
+  
   $scope.searchStock = () => {
     console.log("$scope.searchObj.symbol: ", $scope.searchObj.symbol);
     Stock.getStock($scope.searchObj.symbol)
@@ -119,6 +131,24 @@ app.controller('stockCtrl', function($scope, Stock, CurrentUser, User, $state){
     })
   }
 
+  // Stock.getStock($scope.searchObj.symbol)
+  //     .then(res => {
+  //       console.log("res: ", res.data);
+  //       if(res.data.Message){
+  //         console.log("got message");
+  //         $scope.message = res.data.Message;
+  //       }else{
+  //
+  //         $scope.showSearchStock = res.data;
+  //         $scope.message = null;
+  //       }
+  //     })
+  //     .catch(err => {
+  //       console.log("err: ", err);
+  //     })
+
+
+
   $scope.refreshPage = () => {
     $state.reload('stock');
   }
@@ -149,6 +179,8 @@ app.controller('stockCtrl', function($scope, Stock, CurrentUser, User, $state){
       .catch(err => {
         console.log("err: ", err);
       })
+
+
   }
 
 

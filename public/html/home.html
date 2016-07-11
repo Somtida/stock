@@ -1,57 +1,11 @@
 <div class="container">
-<h1>Search!</h1>
 
-<form ng-submit='searchStock()'>
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a ui-sref="home.lookup">Lookup</a></li>
+    <li role="presentation"><a ui-sref="home.search">Search</a></li>
+  </ul>
 
-  <input type="text" ng-model='searchObj.symbol' placeholder="symbol" required>
-  <button class="btn btn-success">Search</button>
+  <div ui-view></div>
 
-</form>
-<br>
-<div>
-  <div ng-show="message" class="alert alert-warning">
-    {{message}}
-  </div>
-</div>
 
-<div ng-if="showSearchStock">
-  <!-- {{showSearchStock | json}} -->
-
-  <h1>{{ showSearchStock.Name }}</h1>
-  <table class="table">
-
-    <tr>
-      <td>Symbol : </td>
-      <td>{{ showSearchStock.Symbol }}</td>
-    </tr>
-    <tr>
-      <td>LastPrice : </td>
-      <td>{{ showSearchStock.LastPrice | currency}}</td>
-    </tr>
-    <tr>
-      <td>Low : </td>
-      <td>{{ showSearchStock.Low | currency}}</td>
-    </tr>
-    <tr>
-      <td>High : </td>
-      <td>{{ showSearchStock.High | currency}}</td>
-    </tr>
-    <tr>
-      <td>Change : </td>
-      <td>{{ showSearchStock.Change | currency}}</td>
-    </tr>
-    <tr>
-      <td>ChangePercent : </td>
-      <td>{{ showSearchStock.ChangePercent }}</td>
-    </tr>
-    <tr>
-      <td>Timestamp : </td>
-      <td>{{ showSearchStock.Timestamp | date:'medium'}}</td>
-    </tr>
-    <tr>
-      <td>ChangePercent : </td>
-      <td>{{ showSearchStock.ChangePercent }}</td>
-    </tr>
-  </table>
-</div>
 </div>

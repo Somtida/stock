@@ -16,6 +16,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: '/html/home.html',
       controller: 'homeCtrl'
     })
+    .state('home.search', {
+      url: 'search',
+      templateUrl: '/html/search.html',
+      controller: 'homeCtrl'
+    })
+    .state('home.lookup', {
+      url: 'lookup',
+      templateUrl: '/html/lookup.html',
+      controller: 'homeCtrl'
+    })
 
     .state('login', {
       url: '/login',

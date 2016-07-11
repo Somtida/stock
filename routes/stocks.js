@@ -13,6 +13,13 @@ router.post('/', (req, res) => {
 		res.send(body);
 	})
 })
+router.post('/lookup', (req, res) => {
+  console.log('req.body.symbol: ',req.body.symbol)
+	request(`http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json?input=${req.body.symbol}`, function(err, response, body) {
+		if(err) return res.status(400).send(err);
+		res.send(body);
+	})
+})
 
 
 // router.get('/:symbol', (req, res) => {

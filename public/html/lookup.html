@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Lookup!</h1>
+  <form ng-submit='lookupStock()'>
+
+    <input type="text" ng-model='searchObj.symbol' placeholder="name or symbol" required>
+    <button class="btn btn-success">Search</button>
+
+  </form>
+  <br>
+  <!-- {{ lookupArr | json}} -->
+  <table class="table" ng-show="lookupArr">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Symbol</th>
+        <th>Exchange</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="lookup in lookupArr">
+        <td>{{lookup.Name}}</td>
+        <td>{{lookup.Symbol}}</td>
+        <td>{{lookup.Exchange}}</td>
+    </tbody>
+  </table>
+
+</div>

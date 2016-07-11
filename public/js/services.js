@@ -52,5 +52,9 @@ app.service('Stock', function($http) {
     console.log("service symbol: ", symbol);
     return $http.post('/api/stocks', {symbol: symbol});
   }
+  this.lookupStock = (symbol) => {
+    console.log("service symbol: ", symbol);
+    return $http.post('/api/stocks/lookup', {symbol: symbol});
+  }
 
 });
