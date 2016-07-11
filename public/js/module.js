@@ -11,7 +11,11 @@ app.run(function(User) {
 app.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('home', { url: '/', templateUrl: '/html/home.html' })
+    .state('home', {
+      url: '/',
+      templateUrl: '/html/home.html',
+      controller: 'homeCtrl'
+    })
 
     .state('login', {
       url: '/login',

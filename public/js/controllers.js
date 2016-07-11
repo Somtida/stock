@@ -13,6 +13,21 @@ app.controller('mainCtrl', function($scope, $state, User) {
   };
 });
 
+app.controller('homeCtrl', function($scope, Stock) {
+  console.log('homeCtrl!');
+  $scope.searchStock = () => {
+    console.log("$scope.searchObj.symbol: ", $scope.searchObj.symbol);
+    Stock.getStock($scope.searchObj.symbol)
+      .then(res => {
+        console.log("res: ", res.data);
+        $scope.showSearchStock = (res.data);
+      })
+      .catch(err => {
+        console.log("err: ", err);
+      })
+  }
+
+})
 
 app.controller('loginRegisterCtrl', function($scope, $state, User) {
 
@@ -78,19 +93,27 @@ app.controller('stockCtrl', function($scope, Stock, CurrentUser, User){
   console.log('CurrentUser:', CurrentUser);
   $scope.currentUser = CurrentUser.data;
   console.log("stockCtrl");
-
-
-
-  $scope.searchStock = () => {
-    console.log("$scope.searchObj.symbol: ", $scope.searchObj.symbol);
-    Stock.getStock($scope.searchObj.symbol)
-      .then(res => {
-        console.log("res: ", res.data);
-      })
-      .catch(err => {
-        console.log("err: ", err);
-      })
+  // console.log($scope.currentUser);
+  // console.log("$scope.currentUser.stocks: ",$scope.currentUser.stocks);
+  $scope.myStock = [];
+  let myStocks = $scope.currentUser.stocks;
+  if(myStocks !== []){
+    angular.forEach(myStocks, function(stock){
+      // console.log("my stock: ", stock.symbol);
+      Stock.getStock(stock.symbol)
+        .then(res => {
+          // console.log("res: ", res.data);
+          $scope.myStock.push(res.data);
+          console.log("$scope.myStock: ", $scope.myStock);
+        })
+        .catch(err => {
+          console.log("err: ", err);
+        })
+    })
   }
+
+
+
 
   $scope.addStock = () => {
     console.log("addStock: ", $scope.addObj.symbol);
@@ -99,10 +122,13 @@ app.controller('stockCtrl', function($scope, Stock, CurrentUser, User){
     User.addStock($scope.currentUser._id, $scope.addObj.symbol)
       .then(res => {
         console.log("res.data: ", res.data);
+
       })
       .catch(err => {
         console.log("err: ", err);
       })
   }
+
+
 
 })

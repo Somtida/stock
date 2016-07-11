@@ -62,14 +62,14 @@ router.delete('/', (req, res)=>{
 
 router.put('/addStock/:userId',(req,res)=>{
 
-  User.findById(req.params.userId, (err, User)=>{
-    if(err || !User) return res.status(400).send(err || {error: 'User not found'});
+  User.findById(req.params.userId, (err, user)=>{
+    if(err || !user) return res.status(400).send(err || {error: 'user not found'});
 
     let stock = {
       symbol : req.body.symbol
     }
-    User.stocks.push(stock);
-    User.save((err, savedStock)=>{
+    user.stocks.push(stock);
+    user.save((err, savedStock)=>{
       res.status(err ? 400 : 200).send(err || savedStock);
     })
   })

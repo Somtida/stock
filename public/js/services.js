@@ -37,7 +37,7 @@ app.service('User', function($http, $rootScope, $cookies, $state, $q, TOKENNAME)
   };
 
   this.addStock = (id, symbol) => {
-    return $http.put(`/api/users/addStock/${id}`, symbol);
+    return $http.put(`/api/users/addStock/${id}`, {symbol: symbol});
   }
 
 });
@@ -46,7 +46,7 @@ app.service('Stock', function($http) {
 
   this.getStock = (symbol) => {
     console.log("service symbol: ", symbol);
-    return $http.post('/api/stocks', symbol);
+    return $http.post('/api/stocks', {symbol: symbol});
   }
 
 });

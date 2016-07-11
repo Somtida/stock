@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Stock</h1>
+  <h1>Check Stock</h1>
   <!-- <form ng-submit='searchStock()'>
     <input type="text" ng-model="symbol">
     <button class="btn btn-success">Search</button>
@@ -10,27 +10,58 @@
    <li role="presentation"><a ui-sref="stock.addStock">Add Stock</a></li>
 </ul> -->
 
-  <div class="row">
-    <div class="col-xs-6">
-      <form ng-submit='searchStock()'>
-
-        <input type="text" ng-model='searchObj.symbol' placeholder="symbol" required>
-        <button class="btn btn-success">Search</button>
-
-      </form>
-
-    </div>
-    <div class="col-xs-6">
       <form ng-submit='addStock()'>
 
         <input type="text" ng-model='addObj.symbol' placeholder="symbol" required>
         <button class="btn btn-success">Add</button>
 
       </form>
-    </div>
 
+  <div ng-if="myStock">
+    <!-- {{myStock | json}} -->
+    <pre>
+    <table class="table" ng-repeat="stock in myStock">
+      <thead>
+        <td><h1>{{ stock.Name }}</h1></td>
+
+      </thead>
+      <tbody>
+      <tr>
+        <td>Symbol : </td>
+        <td>{{ stock.Symbol }}</td>
+      </tr>
+      <tr>
+        <td>LastPrice : </td>
+        <td>{{ stock.LastPrice | currency}}</td>
+      </tr>
+      <tr>
+        <td>Low : </td>
+        <td>{{ stock.Low | currency}}</td>
+      </tr>
+      <tr>
+        <td>High : </td>
+        <td>{{ stock.High | currency}}</td>
+      </tr>
+      <tr>
+        <td>Change : </td>
+        <td>{{ stock.Change | currency}}</td>
+      </tr>
+      <tr>
+        <td>ChangePercent : </td>
+        <td>{{ stock.ChangePercent }}</td>
+      </tr>
+      <tr>
+        <td>Timestamp : </td>
+        <td>{{ stock.Timestamp | date}}</td>
+      </tr>
+      <tr>
+        <td>ChangePercent : </td>
+        <td>{{ stock.ChangePercent }}</td>
+      </tr>
+      </tbody>
+    </table>
+    </pre>
   </div>
-
 
 
 </div>

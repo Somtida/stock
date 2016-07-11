@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', require('./routes/api'));
 
 app.get('/', (req, res) => {
-  res.render('index', {title: 'Stock Market'});
+  res.render('index', {title: 'Stock Tracker'});
 });
 
 // catch 404 and forward to error handler
