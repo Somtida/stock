@@ -89,7 +89,7 @@ app.controller('registerCtrl', function() {
 });
 
 
-app.controller('stockCtrl', function($scope, Stock, CurrentUser, User){
+app.controller('stockCtrl', function($scope, Stock, CurrentUser, User, $state){
   console.log('CurrentUser:', CurrentUser);
   $scope.currentUser = CurrentUser.data;
   console.log("stockCtrl");
@@ -112,7 +112,9 @@ app.controller('stockCtrl', function($scope, Stock, CurrentUser, User){
     })
   }
 
-
+  $scope.refreshPage = () => {
+    $state.reload('stock');
+  }
 
 
   $scope.addStock = () => {

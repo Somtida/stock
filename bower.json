@@ -1,9 +1,9 @@
 {
-  "name": "fullstack-template",
+  "name": "stock",
   "description": "",
   "main": "app.js",
   "authors": [
-    "Cade Nichols <cade@cadenichols.com>"
+    "Somtida Sinkamnoonsak <somtida.com>"
   ],
   "license": "ISC",
   "homepage": "",

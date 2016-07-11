@@ -16,14 +16,15 @@
         <button class="btn btn-success">Add</button>
 
       </form>
+      <button class="btn btn-warning" ng-click="refreshPage()">Refresh</button>
 
   <div ng-if="myStock">
     <!-- {{myStock | json}} -->
     <pre>
-    <table class="table" ng-repeat="stock in myStock">
+    <table class="table" ng-repeat="stock in myStock track by $index">
       <thead>
         <td><h1>{{ stock.Name }}</h1></td>
-
+        <td><button class="btn btn-danger" ng-click="deleteAStock(stock._id)">DELETE</button></td>
       </thead>
       <tbody>
       <tr>
