@@ -11,7 +11,7 @@ let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 
-let mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost/userapp';
+let mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost/stockapp';
 
 mongoose.connect(mongoUrl, err => {
   console.log(err || `MongoDB connected to ${mongoUrl}`);
