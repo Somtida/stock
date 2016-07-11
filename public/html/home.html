@@ -1,5 +1,5 @@
 <div class="container">
-<h1>HOME!</h1>
+<h1>Search!</h1>
 
 <form ng-submit='searchStock()'>
 
@@ -7,15 +7,19 @@
   <button class="btn btn-success">Search</button>
 
 </form>
+<br>
+<div>
+  <div ng-show="message" class="alert alert-warning">
+    {{message}}
+  </div>
+</div>
 
 <div ng-if="showSearchStock">
   <!-- {{showSearchStock | json}} -->
 
+  <h1>{{ showSearchStock.Name }}</h1>
   <table class="table">
-    <tr>
-      <td>Name : </td>
-      <td>{{ showSearchStock.Name }}</td>
-    </tr>
+
     <tr>
       <td>Symbol : </td>
       <td>{{ showSearchStock.Symbol }}</td>
@@ -42,7 +46,7 @@
     </tr>
     <tr>
       <td>Timestamp : </td>
-      <td>{{ showSearchStock.Timestamp | date}}</td>
+      <td>{{ showSearchStock.Timestamp | date:'medium'}}</td>
     </tr>
     <tr>
       <td>ChangePercent : </td>

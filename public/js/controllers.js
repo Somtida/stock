@@ -20,7 +20,14 @@ app.controller('homeCtrl', function($scope, Stock) {
     Stock.getStock($scope.searchObj.symbol)
       .then(res => {
         console.log("res: ", res.data);
-        $scope.showSearchStock = (res.data);
+        if(res.data.Message){
+          console.log("got message");
+          $scope.message = res.data.Message;
+        }else{
+
+          $scope.showSearchStock = res.data;
+          $scope.message = null;
+        }
       })
       .catch(err => {
         console.log("err: ", err);
