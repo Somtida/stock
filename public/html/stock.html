@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Check Stock</h1>
+  <h1>Track Stock</h1>
   <!-- <form ng-submit='searchStock()'>
     <input type="text" ng-model="symbol">
     <button class="btn btn-success">Search</button>
@@ -24,7 +24,7 @@
     <table class="table" ng-repeat="stock in myStock track by $index">
       <thead>
         <td><h1>{{ stock.Name }}</h1></td>
-        <td><button class="btn btn-danger" ng-click="deleteAStock(stock._id)">DELETE</button></td>
+        <td><button class="btn btn-danger" ng-click="deleteAStock(stock.Symbol)">DELETE</button></td>
       </thead>
       <tbody>
       <tr>

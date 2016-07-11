@@ -74,6 +74,21 @@ router.put('/addStock/:userId',(req,res)=>{
     })
   })
 })
+router.put('/deleteAStock/:userId',(req,res)=>{
+
+  User.findByIdAndUpdate(req.params.userId, {
+    $pull: {stocks: {
+      symbol: req.body.symbol
+    }}
+  } ,(err, user)=>{
+    if(err || !user) return res.status(400).send(err || {error: 'user not found'});
+
+    user.save((err, savedStock)=>{
+      res.status(err ? 400 : 200).send(err || savedStock);
+    })
+  })
+})
+
 
 
 module.exports = router;

@@ -116,15 +116,28 @@ app.controller('stockCtrl', function($scope, Stock, CurrentUser, User, $state){
     $state.reload('stock');
   }
 
+  $scope.deleteAStock = (symbol) => {
+    // console.log("symbol: ",symbol);
+    // console.log($scope.currentUser._id);
+    User.deleteAStock($scope.currentUser._id, symbol.toLowerCase())
+      .then(res => {
+        console.log("res.data: ", res.data);
+        $state.reload('stock');
+      })
+      .catch(err => {
+        console.log("err: ", err);
+      })
+  }
+
 
   $scope.addStock = () => {
     console.log("addStock: ", $scope.addObj.symbol);
     console.log("current user: ", $scope.currentUser._id);
 
-    User.addStock($scope.currentUser._id, $scope.addObj.symbol)
+    User.addStock($scope.currentUser._id, $scope.addObj.symbol.toLowerCase())
       .then(res => {
         console.log("res.data: ", res.data);
-
+        $state.reload('stock');
       })
       .catch(err => {
         console.log("err: ", err);
