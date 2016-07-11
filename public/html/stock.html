@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Stock</h1>
+  <!-- <form ng-submit='searchStock()'>
+    <input type="text" ng-model="symbol">
+    <button class="btn btn-success">Search</button>
+  </form> -->
+
+  <!-- <ul class="nav nav-tabs nav-justified">
+   <li role="presentation" class="active"><a ui-sref="stock.showAllStock">Show All Stock</a></li>
+   <li role="presentation"><a ui-sref="stock.addStock">Add Stock</a></li>
+</ul> -->
+
+  <div class="row">
+    <div class="col-xs-6">
+      <form ng-submit='searchStock()'>
+
+        <input type="text" ng-model='searchObj.symbol' placeholder="symbol" required>
+        <button class="btn btn-success">Search</button>
+
+      </form>
+
+    </div>
+    <div class="col-xs-6">
+      <form ng-submit='addStock()'>
+
+        <input type="text" ng-model='addObj.symbol' placeholder="symbol" required>
+        <button class="btn btn-success">Add</button>
+
+      </form>
+    </div>
+
+  </div>
+
+
+
+</div>
