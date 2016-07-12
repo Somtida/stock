@@ -26,7 +26,7 @@ app.controller('homeCtrl', function($scope, Stock) {
         console.log("err: ", err);
       })
   }
-  
+
   $scope.searchStock = () => {
     console.log("$scope.searchObj.symbol: ", $scope.searchObj.symbol);
     Stock.getStock($scope.searchObj.symbol)
@@ -131,22 +131,6 @@ app.controller('stockCtrl', function($scope, Stock, CurrentUser, User, $state){
     })
   }
 
-  // Stock.getStock($scope.searchObj.symbol)
-  //     .then(res => {
-  //       console.log("res: ", res.data);
-  //       if(res.data.Message){
-  //         console.log("got message");
-  //         $scope.message = res.data.Message;
-  //       }else{
-  //
-  //         $scope.showSearchStock = res.data;
-  //         $scope.message = null;
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.log("err: ", err);
-  //     })
-
 
 
   $scope.refreshPage = () => {
@@ -183,6 +167,32 @@ app.controller('stockCtrl', function($scope, Stock, CurrentUser, User, $state){
 
   }
 
+    // Stock.getStock($scope.searchObj.symbol)
+    //   .then(res => {
+    //     console.log("res: ", res.data);
+    //     if(res.data.Message){
+    //       console.log("got message");
+    //       $scope.message = res.data.Message;
+    //     }else{
+    //       $scope.showSearchStock = res.data;
+    //       $scope.message = null;
+    //
+    //       User.addStock($scope.currentUser._id, $scope.addObj.symbol.toLowerCase())
+    //         .then(res => {
+    //           console.log("res.data: ", res.data);
+    //           $state.reload('stock');
+    //         })
+    //         .catch(err => {
+    //           console.log("err: ", err);
+    //         })
+    //
+    //
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log("err: ", err);
+    //   })
 
+  // }
 
 })

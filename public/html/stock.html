@@ -1,14 +1,5 @@
 <div class="container">
   <h1>Track Stock</h1>
-  <!-- <form ng-submit='searchStock()'>
-    <input type="text" ng-model="symbol">
-    <button class="btn btn-success">Search</button>
-  </form> -->
-
-  <!-- <ul class="nav nav-tabs nav-justified">
-   <li role="presentation" class="active"><a ui-sref="stock.showAllStock">Show All Stock</a></li>
-   <li role="presentation"><a ui-sref="stock.addStock">Add Stock</a></li>
-</ul> -->
 
   <form ng-submit='addStock()'>
 
@@ -16,7 +7,7 @@
     <button class="btn btn-success">Add</button>
 
   </form>
-  <button class="btn btn-info" ng-click="refreshPage()">Refresh</button>
+
   <br>
   <br>
 
@@ -26,54 +17,40 @@
     </div>
   </div>
 
-
-
-
-
   <div ng-if="myStock">
     <!-- {{myStock | json}} -->
-    <pre>
-    <table class="table" ng-repeat="stock in myStock track by $index">
+    <!-- <pre> -->
+    <button ng-show="myStock.length" class="btn btn-info" ng-click="refreshPage()">Refresh</button>
+    <table class="table">
       <thead>
-        <td><h1>{{ stock.Name }}</h1></td>
-        <td><button class="btn btn-danger" ng-click="deleteAStock(stock.Symbol)">DELETE</button></td>
+        <tr>
+          <th>Name</th>
+          <th>Symbol</th>
+          <th>LastPrice</th>
+          <th>Low</th>
+          <th>High</th>
+          <th>Change</th>
+          <th>ChangePercent</th>
+          <th>Timestamp</th>
+          <th>Delete</th>
+        </tr>
+
       </thead>
-      <tbody>
-      <tr>
-        <td>Symbol : </td>
-        <td>{{ stock.Symbol }}</td>
-      </tr>
-      <tr>
-        <td>LastPrice : </td>
-        <td>{{ stock.LastPrice | currency}}</td>
-      </tr>
-      <tr>
-        <td>Low : </td>
-        <td>{{ stock.Low | currency}}</td>
-      </tr>
-      <tr>
-        <td>High : </td>
-        <td>{{ stock.High | currency}}</td>
-      </tr>
-      <tr>
-        <td>Change : </td>
-        <td>{{ stock.Change | currency}}</td>
-      </tr>
-      <tr>
-        <td>ChangePercent : </td>
-        <td>{{ stock.ChangePercent }}</td>
-      </tr>
-      <tr>
-        <td>Timestamp : </td>
-        <td>{{ stock.Timestamp | date:'medium'}}</td>
-      </tr>
-      <tr>
-        <td>ChangePercent : </td>
-        <td>{{ stock.ChangePercent }}</td>
-      </tr>
+      <tbody  ng-repeat="stock in myStock track by $index">
+        <tr>
+          <td>{{ stock.Name }}</td>
+          <td>{{ stock.Symbol }}</td>
+          <td>{{ stock.LastPrice | currency}}</td>
+          <td>{{ stock.Low | currency}}</td>
+          <td>{{ stock.High | currency}}</td>
+          <td>{{ stock.Change | currency}}</td>
+          <td>{{ stock.ChangePercent | number:2 }}</td>
+          <td>{{ stock.Timestamp | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+          <td><button class="btn btn-danger" ng-click="deleteAStock(stock.Symbol)">X</button></td>
+        </tr>
       </tbody>
     </table>
-    </pre>
+    <!-- </pre> -->
   </div>
 
 
